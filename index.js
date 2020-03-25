@@ -8,8 +8,10 @@ const port = process.env.PORT || 6000
 
 
 
-app.use("/", (req, res) => {
-  console.log("I LOVE CODING")
+app.use("/weather", async (req, res) => {
+  const response = await axios.get(`https://api.darksky.net/forecast/${process.env.WEATHER_API}/42.3601,-71.0589`)
+  const weatherData = response.data
+  res.json(weatherData)
 })
 
 
